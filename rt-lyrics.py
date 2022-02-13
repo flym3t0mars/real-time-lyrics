@@ -10,20 +10,12 @@ def clear():
 		pass
 	return
 
-def goedit():
-	os.system(f'nano {sys.argv[0]}')
-	return
-
 def lyrics():
 	global s
 	s=''
 
-# """import something that will stream the audio to get the timing?"""
-
-
 def main():
 	clear()
-	goedit()
 
 if __name__=="__main__":
 	main()

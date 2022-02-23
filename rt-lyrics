@@ -1,0 +1,41 @@
+#! /bin/python
+import os,sys,time
+
+def clear():
+	try:
+		os.system('clear')
+	except:
+		os.system('cls')
+	else:
+		pass
+	return
+
+def port(file='NULL'):
+	if file == 'NULL':
+		print('file not found')
+		exit()
+	else:
+		with open(file,'r+') as r:
+			global lyric
+			lyric=r.readlines()
+	return lyric
+
+def lyrics(s):
+	for word in s:
+		print(word,end='',sep=' ')
+		time.sleep(0.5)
+		os.system('clear')
+	
+
+# """import something that will stream the audio to get the timing?"""
+
+
+def main():
+	print('make sure to input a file\n rt-lyrics file')
+	time.sleep(2)
+	port(sys.argv[1])
+	lyrics(lyric)
+
+if __name__=="__main__":
+	main()
+

@@ -15,10 +15,15 @@ def lyrics(s):
 	os.system('clear')
 	for words in s:
 		for word in words:
+			cur_word=[]
+			cur_word.append(word)
+	
 			if word == ' ':
 				os.system('clear')
+				print(cur_word)
+				cur_word.clear()
 			else:
-				print(word.center(30),end='',sep=' ',flush=True)
+				print(word,end='',sep=' ',flush=True)
 				time.sleep(0.15)	
 def main():
 	print('make sure to input a file\n rt-lyrics file')

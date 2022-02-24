@@ -1,0 +1,32 @@
+#! /bin/python
+import os,sys,time
+
+song=[]
+def reader():
+	with open(sys.argv[1],'r')as r:
+		lyrics=r.readlines()
+	for words in lyrics:
+		song.append(words)
+	return
+
+def animator(a='0file does not contain lyrics',b=0.15):
+	for i in range(len(a)):
+		print(a[i],end='',flush=True)
+		time.sleep(b)
+
+def main():
+	if sys.platform!='linux':
+		exit()
+	try:
+		reader()
+		if song==[]:
+			animator('1file does not contain lyrics',0.00)
+		else:
+			animator(song,float(sys.argv[2]))
+	except Exception as e:
+		print(e)
+	else:
+		pass
+
+if __name__=="__main__":
+	main()

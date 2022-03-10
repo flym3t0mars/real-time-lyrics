@@ -1,31 +1,41 @@
 #! /bin/python
 import os,sys,time
 
+timing=0.2
+
 def port(file='NULL'):
-	if file == 'NULL':
-		print('file not found')
-		exit()
-	else:
-		with open(file,'r+') as r:
-			global lyric
-			lyric=r.readlines()
+	with open(file,'r+') as r:
+		global lyric
+		lyric=r.readlines()
 	return lyric
 
 def lyrics(s):
 	os.system('clear')
+	cw=[]
 	for words in s:
 		for word in words:
 			if word == ' ':
+				print(''.join(cw).center(30))
+				time.sleep(timing)
 				os.system('clear')
+				cw.clear()
 			else:
-				print(word,end='',sep=' ',flush=True)
-				time.sleep(0.15)	
+				cw.append(word)
+				# individual characters printed
+				# print(word,end='',sep=' ',flush=True)
+				# time.sleep(timing)
+		time.sleep(timing)
+		cw.clear()
 def main():
 	print('make sure to input a file\n rt-lyrics file')
 	time.sleep(2)
-	port(sys.argv[1])
-	lyrics(lyric)
-
+	try:
+		port(sys.argv[1])
+		lyrics(lyric)
+	except Exception as e:
+		print(e)
+	else:
+		exit()
 if __name__=="__main__":
 	main()
 
